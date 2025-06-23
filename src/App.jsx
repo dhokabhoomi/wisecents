@@ -4,9 +4,11 @@ import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
 import SummaryDashboard from "./components/SummaryDashboard/SummaryDashboard";
 import TransactionForm from "./components/TransactionForm/TransactionForm";
 import TransactionList from "./components/TransactionList/TransactionList";
+import { useLocalStorageTransactions } from "./hooks/useLocalStorageTransactions";
+import SpendingChart from "./components/SummaryDashboard/SpendingChart";
 
 function App() {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useLocalStorageTransactions([]);
   const [editTx, setEditTx] = useState(null);
   const [filterCategory, setFilterCategory] = useState("all");
 
@@ -38,6 +40,7 @@ function App() {
     <div className="container mt-4">
       <h2>WiseCents - Expense Tracker</h2>
       <SummaryDashboard transactions={transactions} />
+      <SpendingChart transactions={transactions} />
       <TransactionForm
         onAdd={addTransaction}
         onUpdate={updateTransaction}
