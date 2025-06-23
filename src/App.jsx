@@ -8,6 +8,7 @@ import TransactionList from "./components/TransactionList/TransactionList";
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [editTx, setEditTx] = useState(null);
+  const [filterCategory, setFilterCategory] = useState("all");
 
   const addTransaction = (newTr) => {
     setTransactions([newTr, ...transactions]);
@@ -28,6 +29,11 @@ function App() {
     setEditTx(null);
   };
 
+  const filteredTransactions =
+    filterCategory === "all"
+      ? transactions
+      : transactions.filter((tx) => tx.category === filterCategory);
+
   return (
     <div className="container mt-4">
       <h2>WiseCents - Expense Tracker</h2>
@@ -37,9 +43,12 @@ function App() {
         onUpdate={updateTransaction}
         editTx={editTx}
       />
-      <CategoryFilter />
+      <CategoryFilter
+        selected={filterCategory}
+        setSelected={setFilterCategory}
+      />
       <TransactionList
-        transactions={transactions}
+        transactions={filteredTransactions}
         onDelete={deleteTransaction}
         onEdit={startEdit}
       />
