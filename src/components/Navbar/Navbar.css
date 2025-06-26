@@ -1,0 +1,14 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--color-card);
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
