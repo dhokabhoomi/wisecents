@@ -1,0 +1,21 @@
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.category-select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: transparent;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  /* transition: border-color 0.2s ease; */
+}
+
+.category-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}

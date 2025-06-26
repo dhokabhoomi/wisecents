@@ -1,32 +1,37 @@
-function CategoryFilter({ selected, setSelected }) {
-  const categories = [
-    "all",
-    "food",
-    "shopping",
-    "utilities",
-    "transaport",
-    "entertainment",
-    "salary",
-    "rent",
-    "others",
-  ];
-  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+import React from "react";
+import "./CategoryFilter.css";
 
+const categories = [
+  { value: "all", label: "All Categories" },
+  { value: "food", label: "Food" },
+  { value: "transport", label: "Transport" },
+  { value: "shopping", label: "Shopping" },
+  { value: "utilities", label: "Utilities" },
+  { value: "salary", label: "Salary" },
+  { value: "rent", label: "Rent" },
+  { value: "entertainment", label: "Entertainment" },
+  { value: "healthcare", label: "Healthcare" },
+  { value: "others", label: "Others" },
+];
+
+const CategoryFilter = React.memo(({ value, onChange }) => {
   return (
-    <div className="card p-3 mb-3">
-      <h5>Filter by Category</h5>
+    <section className="filter-section">
+      <h2>Filter Transactions</h2>
+
       <select
-        value={selected}
-        className="form-select"
-        onChange={(e) => setSelected(e.target.value)}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="category-select"
+        aria-label="Filter by category"
       >
         {categories.map((cat) => (
-          <option key={cat} value={cat}>
-            {capitalize(cat)}
+          <option key={cat.value} value={cat.value}>
+            {cat.label}
           </option>
         ))}
       </select>
-    </div>
+    </section>
   );
-}
+});
 export default CategoryFilter;
